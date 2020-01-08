@@ -13,9 +13,9 @@ J = 0;
 % Instructions: Compute the cost of a particular choice of theta
 %               You should set J to the cost.
 
-
-
-
+prediction = X * theta; % m x n * n x 1
+errs = prediction - y;  % m x 1 - m x 1
+J = (1/(2*length(y))) * sum(errs.^2);
 
 % =========================================================================
 
