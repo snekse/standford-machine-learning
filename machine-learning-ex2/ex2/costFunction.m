@@ -20,12 +20,17 @@ grad = zeros(size(theta));
 % Note: grad should have the same dimensions as theta
 %
 
+% logistic regression prediction is sigmoid of linear regression hypothesis
+h = sigmoid(X * theta); % m x n * n x 1
+% 
 
+% Cost according to lecture notes
+J = (1/m) * ( -y'*log(h) - (1-y)'*log(1-h) );
 
-
-
-
-
+errs = h - y;  % m x 1 - m x 1 => m x 1
+% 1 x m * m x n => 1 x n --> (1xn)' => n x 1
+grad = 1/m * (errs' * X)'; % need an n x 1 vector to match theta
+% No alpha or lambda??
 
 % =============================================================
 
