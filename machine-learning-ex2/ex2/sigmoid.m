@@ -10,8 +10,9 @@ g = zeros(size(z));
 %               vector or scalar).
 
 
-
-
+% The sigmoid function is defined as:
+% g(z) = 1 / (1 + e^-z) :
+g = 1 ./ (1 + exp(-z));
 
 % =============================================================
 
