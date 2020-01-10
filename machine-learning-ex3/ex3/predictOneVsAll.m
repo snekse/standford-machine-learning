@@ -31,10 +31,9 @@ X = [ones(m, 1) X];
 %       
 
 
-
-
-
-
+ p = sigmoid(X * all_theta');
+ [max_val, max_idx] = max(p, [], 2);
+ p = max_idx; % return the index for the class we are most confident about
 
 % =========================================================================
 

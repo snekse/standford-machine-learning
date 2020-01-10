@@ -38,9 +38,25 @@ grad = zeros(size(theta));
 
 
 
+featureTheta = theta(2:end,:);
+calcTheta = [0;featureTheta];
 
+% logistic regression prediction is sigmoid of linear regression hypothesis
+h = sigmoid(X * theta); % m x n * n x 1
+% 'sigmoid(X * theta)'
+% h
 
-
+% Cost according to lecture notes
+J = (1/m) * ( -y'*log(h) - (1-y)'*log(1-h) );
+% J;
+regFactor = (lambda/(2*m)) * (calcTheta' * calcTheta); % ignore first row
+regFactor;
+J = J + regFactor;
+% J;
+errs = h - y;  % m x 1 - m x 1 => m x 1
+% 1 x m * m x n => 1 x n --> (1xn)' => n x 1
+grad = 1/m * (errs' * X)'; % need an n x 1 vector to match theta
+grad = grad + ((lambda/m)*calcTheta);
 
 
 
