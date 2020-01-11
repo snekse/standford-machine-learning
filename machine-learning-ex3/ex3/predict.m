@@ -21,12 +21,20 @@ p = zeros(size(X, 1), 1);
 %       can use max(A, [], 2) to obtain the max for each row.
 %
 
+% need to add 1s to X
 
+% The matrices Theta1 and Theta2 will now be in your Octave environment
+% X has size 5000 x 400+1
+% Theta1 has size 25 x 401
+% Theta2 has size 10 x 26
 
+X = [ones(m, 1) X];
+p = sigmoid(X * Theta1'); % 5000 x 25
+p = [ones(size(p, 1), 1) p]; % +1
+p = sigmoid(p * Theta2'); % TODO need to add 1's to p
 
-
-
-
+ [max_val, max_idx] = max(p, [], 2);
+ p = max_idx; % return the index for the class we are most confident about
 
 
 % =========================================================================
